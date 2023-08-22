@@ -3,18 +3,15 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  useNavigate,
 } from 'react-router-dom';
 import "./styles/App.css";
 import Home from "./pages/Home";
 
 function App() {
-  const navigate = useNavigate();
-
-  return(
+  return (
     <Router>
       <div>
-        <div className="conten">
+        <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>

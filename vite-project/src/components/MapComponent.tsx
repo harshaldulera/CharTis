@@ -3,9 +3,11 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Button, Paper, Typography } from '@mui/material';
 
-const mapboxApiToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
+const mapboxApiAccessToken = import.meta.env.REACT_APP_MAPBOX_API_TOKEN;
 
 const MapComponent = () => {
+
+
     const [viewport, setViewport] = useState({
         width: "100%",
         height: "100%",
@@ -45,7 +47,7 @@ const MapComponent = () => {
                 {...viewport}
                 mapStyle="mapbox://styles/mapbox/streets-v11"
                 onViewportChange={(nextViewport) => setViewport(nextViewport)}
-                mapboxApiAccessToken={mapboxApiToken}
+                mapboxApiAccessToken={mapboxApiAccessToken}
             >
                 {/* Marker */}
                 <Marker

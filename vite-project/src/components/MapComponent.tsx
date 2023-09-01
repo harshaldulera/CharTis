@@ -3,7 +3,7 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Button, Paper, Typography } from '@mui/material';
 
-const mapboxApiAccessToken = import.meta.env.REACT_APP_MAPBOX_API_TOKEN;
+const mapboxAccessToken = import.meta.env.VITE_APP_MAPBOX_API;
 
 const MapComponent = () => {
 
@@ -26,11 +26,11 @@ const MapComponent = () => {
 
     useEffect(() => {
         function handleResize() {
-            setViewport({
-                ...viewport,
+            setViewport((prevViewport) => ({
+                ...prevViewport,
                 width: window.innerWidth,
                 height: window.innerHeight,
-            });
+            }));
         }
 
         window.addEventListener("resize", handleResize);
@@ -39,7 +39,7 @@ const MapComponent = () => {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
-    }, [viewport]);
+    }, []);
 
     return (
         <div style={{ width: "100%", height: "100%" }}>
@@ -47,7 +47,7 @@ const MapComponent = () => {
                 {...viewport}
                 mapStyle="mapbox://styles/mapbox/streets-v11"
                 onViewportChange={(nextViewport) => setViewport(nextViewport)}
-                mapboxApiAccessToken={mapboxApiAccessToken}
+                mapboxApiAccessToken={mapboxAccessToken}
             >
                 {/* Marker */}
                 <Marker

@@ -8,8 +8,8 @@ const MapComponent: React.FC = () => {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const [map, setMap] = useState<Map | null>(null);
 
-  const lng = -70.9;
-  const lat = 42.35;
+  const lng = 72.90;
+  const lat = 19.07;
   const zoom = 9;
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const MapComponent: React.FC = () => {
 
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <div ref={mapContainer} className="map-container" style={{ width: '100%', height: '100%' }} />
+      <div ref={mapContainer} className="map-container" style={{ width: "100vw", height: "100vh" }} />
     </div>
   );
 };

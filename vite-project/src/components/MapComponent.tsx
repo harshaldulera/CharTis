@@ -16,29 +16,20 @@ const MapComponent: React.FC = () => {
     if (!mapContainer.current) return;
 
     if (!mapboxgl.supported()) {
-      mapContainer.current.innerHTML = 'WebGL is not supported by your browser.';
+      mapContainer.current.innerHTML = 'Your browser does not support Mapbox GL';
       return;
     }
 
     const initializeMap = () => {
+      const newMap = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [lng, lat],
+        zoom: zoom,
+        accessToken: mapboxAccessToken,
+      });
 
-        const container = mapContainer.current;
-
-        if (!container) return;
-
-        while (container.firstChild){
-            container.removeChild(container.firstChild);
-        }
-
-        const newMap = new mapboxgl.Map({
-            container: container,
-            style: 'mapbox://styles/mapbox/streets-v12',
-            center: [lng, lat],
-            zoom: zoom,
-            accessToken: mapboxAccessToken,
-        });
-
-        setMap(newMap);
+      setMap(newMap);
     };
 
     if (!map) {

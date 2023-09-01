@@ -21,15 +21,24 @@ const MapComponent: React.FC = () => {
     }
 
     const initializeMap = () => {
-      const newMap = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/streets-v12',
-        center: [lng, lat],
-        zoom: zoom,
-        accessToken: mapboxAccessToken,
-      });
 
-      setMap(newMap);
+        const container = mapContainer.current;
+
+        if (!container) return;
+
+        while (container.firstChild){
+            container.removeChild(container.firstChild);
+        }
+
+        const newMap = new mapboxgl.Map({
+            container: container,
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: [lng, lat],
+            zoom: zoom,
+            accessToken: mapboxAccessToken,
+        });
+
+        setMap(newMap);
     };
 
     if (!map) {

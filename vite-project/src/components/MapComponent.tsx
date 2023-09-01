@@ -15,7 +15,6 @@ const MapComponent: React.FC = () => {
   useEffect(() => {
     if (!mapContainer.current) return;
 
-    // Check for WebGL support
     if (!mapboxgl.supported()) {
       mapContainer.current.innerHTML = 'WebGL is not supported by your browser.';
       return;
@@ -27,7 +26,7 @@ const MapComponent: React.FC = () => {
         style: 'mapbox://styles/mapbox/streets-v12',
         center: [lng, lat],
         zoom: zoom,
-        accessToken: mapboxAccessToken, // Set the accessToken here
+        accessToken: mapboxAccessToken,
       });
 
       setMap(newMap);

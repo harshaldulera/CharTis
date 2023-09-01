@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "mapbox-gl-supported": "^1.2.0"
+  }
+}

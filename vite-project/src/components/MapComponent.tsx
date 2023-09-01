@@ -1,85 +1,54 @@
-import React, { useEffect, useState } from "react";
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import React, { useEffect, useRef, useState } from 'react';
+import mapboxgl, { Map } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { Button, Paper, Typography } from '@mui/material';
 
 const mapboxAccessToken = import.meta.env.VITE_APP_MAPBOX_API;
 
-const MapComponent = () => {
+const MapComponent: React.FC = () => {
+  const mapContainer = useRef<HTMLDivElement | null>(null);
+  const [map, setMap] = useState<Map | null>(null);
 
+  const lng = -70.9;
+  const lat = 42.35;
+  const zoom = 9;
 
-    const [viewport, setViewport] = useState({
-        width: "100%",
-        height: "100%",
-        latitude: 37.7577,
-        longitude: -122.4376,
-        zoom: 10,
-    });
+  useEffect(() => {
+    if (!mapContainer.current) return;
 
-    const [marker, setMarker] = useState({
-        latitude: 37.7577,
-        longitude: -122.4376,
-        name: "Hello",
-    });
+    // Check for WebGL support
+    if (!mapboxgl.supported()) {
+      mapContainer.current.innerHTML = 'WebGL is not supported by your browser.';
+      return;
+    }
 
-    const [showPopup, setShowPopup] = useState(false);
+    const initializeMap = () => {
+      const newMap = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [lng, lat],
+        zoom: zoom,
+        accessToken: mapboxAccessToken, // Set the accessToken here
+      });
 
-    useEffect(() => {
-        function handleResize() {
-            setViewport((prevViewport) => ({
-                ...prevViewport,
-                width: window.innerWidth,
-                height: window.innerHeight,
-            }));
-        };
+      setMap(newMap);
+    };
 
-        window.addEventListener("resize", handleResize);
-        handleResize();
+    if (!map) {
+      initializeMap();
+    }
 
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
+    return () => {
+      if (map) {
+        map.remove();
+      }
+    };
+  }, [map, lat, lng, zoom]);
 
-    return (
-        <div style={{ width: "100%", height: "100%" }}>
-            <ReactMapGL
-                {...viewport}
-                mapStyle="mapbox://styles/mapbox/streets-v11"
-                onViewportChange={(nextViewport) => setViewport(nextViewport)}
-                mapboxApiAccessToken={mapboxAccessToken}
-            >
-                {/* Marker */}
-                <Marker
-                    latitude={marker.latitude}
-                    longitude={marker.longitude}
-                    offsetLeft={-20}
-                    offsetTop={-10}
-                >
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => setShowPopup(true)}
-                    >
-                        {marker.name}
-                    </Button>
-                </Marker>
-
-                {/* Popup */}
-                {showPopup && (
-                    <Popup
-                        latitude={marker.latitude}
-                        longitude={marker.longitude}
-                        onClose={() => setShowPopup(false)}
-                    >
-                        <Paper elevation={3} style={{ padding: "10px" }}>
-                            <Typography variant="h6">{marker.name}</Typography>
-                        </Paper>
-                    </Popup>
-                )}
-            </ReactMapGL>
-        </div>
-    );
+  return (
+    <div style={{ width: '100%', height: '100%' }}>
+      <div ref={mapContainer} className="map-container" style={{ width: '100%', height: '100%' }} />
+    </div>
+  );
 };
 
 export default MapComponent;

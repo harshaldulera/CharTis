@@ -14,7 +14,7 @@ export function SearchBox({ accessToken }) {
     };
 
 return (
-    <div className="search-box">
+    <div className="searchbox">
         <input
             type="text"
             placeholder="Search"

@@ -1,0 +1,23 @@
+.main{
+    position: absolute,
+    width: 100vw;
+    top: 0,
+    left: 0,
+    z-index: 0,
+}
+
+.map-container{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.searchbox{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 100 !important;
+}

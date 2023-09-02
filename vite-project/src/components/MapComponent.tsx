@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl, { Map } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { SearchBox } from './floating-components/SearchBox';
 
 const mapboxAccessToken = import.meta.env.VITE_APP_MAPBOX_API;
 
@@ -44,16 +45,27 @@ const MapComponent: React.FC = () => {
   }, [map, lat, lng, zoom]);
 
   const mapStyle = {
+    position: 'fixed',
     width: '100vw',
     height: '100vh',
-    position: 'fixed',
     top: 0,
     left: 0,
+    right: 0,
+    bottom: 0,
     zIndex: 0,
+  };
+
+  const searchBoxStyle = {
+    position: 'absolute',
+    display: 'flex',
+    top: '10px',
+    left: '10px',
+    zIndex: 1,
   };
 
   return (
     <div style={mapStyle}>
+      <SearchBox accessToken={mapboxAccessToken} style={searchBoxStyle} />
       <div ref={mapContainer} className="map-container" style={mapStyle} />
     </div>
   );

@@ -32,24 +32,24 @@ const MapboxSearchBox = ({ accessToken }) => {
 
     return (
         <div className="search-box">
+          <form onSubmit={handleSearch}>
             <input
-                type="text"
-                placeholder="Search"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                />
-                <button onClick={handleSearch}>Search</button>
-
-                <ul>
-                    {searchResults.map((results, index) => (
-                        <li key={index}>
-                            {results.name} ({results.coordinates.join(", ")})
-                            </li>
-                    ))}
-                </ul>
+              type="text"
+              placeholder="Search"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+            <button type="submit">Search</button>
+          </form>
+          <div className="search-results">
+            <ul>
+              {searchResults.map((result) => (
+                <li key={result.id}>{result.place_name}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-    );
-
-};
+      );
+    };
 
 export default MapboxSearchBox;

@@ -3,10 +3,11 @@ import React, { useState } from "react";
 const accessToken = import.meta.env.VITE_APP_MAPBOX_API;
 
 const MapboxSearchBox = ({ accessToken }) => {
-    const [searchValue, setSearchValue] = useState("");
+    const [searchText, setSearchText] = useState("");
     const [searchResults, setSearchResults] = useState([]);
 
     const handleSearch = async (e) => {
+        e.preventDefault(); 
         try {
             const response = await fetch(
                 `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchText}.json?access_token=${accessToken}`

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { TextField, Button, List, ListItem, ListItemText, Paper } from "@mui/material";
 
 const accessToken = import.meta.env.VITE_APP_MAPBOX_API;
 
@@ -31,25 +32,33 @@ const MapboxSearchBox = ({ accessToken }) => {
     };
 
     return (
-        <div className="search-box">
-          <form onSubmit={handleSearch}>
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-            />
-            <button type="submit">Search</button>
-          </form>
-          <div className="search-results">
-            <ul>
-              {searchResults.map((result) => (
-                <li key={result.id}>{result.place_name}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      );
-    };
-
+        <Paper className="searchbox" elevation={3}>
+            <form onSubmit={handleSearch} style={{ padding: "16px" }}>
+                <TextField
+                    type="text"
+                    label="Search"
+                    fullWidth
+                    variant="outlined"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    />
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        style={{ marginTop: "16px" }}
+                        >Search</Button>
+                        </form>
+                        <div className="search-results">
+                        <List>
+                            {searchResults.map((result, index) => (
+                                <ListItem key={index} button>
+                                    <ListItemText primary={result.name} />
+                                    </ListItem>
+                            ))}
+                        </List>
+                        </div>
+        </Paper>
+    );
+                            };
 export default MapboxSearchBox;

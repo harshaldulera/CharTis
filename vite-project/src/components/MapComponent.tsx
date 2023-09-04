@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl, { Map } from 'mapbox-gl';
+import MapboxSearchBox from './floating-components/MapboxSearchBox';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { SearchBox } from './floating-components/SearchBox';
 import '../styles/components/floating-components/SearchBox.css';
 
 const mapboxAccessToken = import.meta.env.VITE_APP_MAPBOX_API;
@@ -48,7 +48,7 @@ const MapComponent: React.FC = () => {
   return (
     <div className='main'>
       <div ref={mapContainer} className="map-container" />
-      <SearchBox accessToken={mapboxAccessToken} />
+      <MapboxSearchBox accessToken={mapboxAccessToken} />
     </div>
   );
 };

@@ -32,7 +32,7 @@ const MapboxSearchBox = ({ accessToken }) => {
     };
 
     return (
-        <Paper className="searchbox" elevation={3}>
+        <div>
             <form onSubmit={handleSearch} style={{ padding: "16px" }}>
                 <TextField
                     type="text"
@@ -58,7 +58,8 @@ const MapboxSearchBox = ({ accessToken }) => {
                             ))}
                         </List>
                         </div>
-        </Paper>
+                        </div>
     );
-                            };
+};
+
 export default MapboxSearchBox;

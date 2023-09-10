@@ -32,7 +32,7 @@ const MapboxSearchBox = ({ accessToken }) => {
     };
 
     return (
-        <div>
+        <div style={{ position: 'absolute', top: '0', left: '0' }}>
             <form onSubmit={handleSearch} style={{ padding: "16px" }}>
                 <TextField
                     type="text"

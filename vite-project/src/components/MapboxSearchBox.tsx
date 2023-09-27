@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button, List, ListItem, ListItemText, Paper } from "@mui/material";
 import '../styles/SearchBox.css';
+import { FaSearch } from 'react-icons/fa'; 
 
 const accessToken = import.meta.env.VITE_APP_MAPBOX_API;
 
@@ -43,6 +44,11 @@ const MapboxSearchBox = ({ accessToken }) => {
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                     style={{ backgroundColor: "white" }}
+                    InputProps={{
+                        startAdornment: (
+                            <FaSearch style={{ marginLeft: "8px", color: 'gray' }} />
+                        ),
+                    }}
                     />
                     <Button
                         type="submit"

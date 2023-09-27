@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl, { Map } from 'mapbox-gl';
-import MapboxSearchBox from './floating-components/MapboxSearchBox';
+import MapboxSearchBox from './MapboxSearchBox';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import '../styles/components/floating-components/SearchBox.css';
+import '../styles/SearchBox.css';
 
 const mapboxAccessToken = import.meta.env.VITE_APP_MAPBOX_API;
 
@@ -12,7 +12,7 @@ const MapComponent: React.FC = () => {
 
   const lng = 72.90;
   const lat = 19.07;
-  const zoom = 9;
+  const zoom = 14;
 
   useEffect(() => {
     if (!mapContainer.current) return;

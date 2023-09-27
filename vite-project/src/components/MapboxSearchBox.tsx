@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TextField, Button, List, ListItem, ListItemText, Paper } from "@mui/material";
+import '../styles/SearchBox.css';
 
 const accessToken = import.meta.env.VITE_APP_MAPBOX_API;
 
@@ -32,7 +33,7 @@ const MapboxSearchBox = ({ accessToken }) => {
     };
 
     return (
-        <div style={{ position: 'absolute', top: '0', left: '0' }}>
+        <div className="class" style={{ position: 'absolute', top: '0', left: '0' }}>
             <form onSubmit={handleSearch} style={{ padding: "16px" }}>
                 <TextField
                     type="text"
@@ -41,6 +42,7 @@ const MapboxSearchBox = ({ accessToken }) => {
                     variant="outlined"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
+                    style={{ backgroundColor: "white" }}
                     />
                     <Button
                         type="submit"

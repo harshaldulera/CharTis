@@ -56,7 +56,7 @@ const MapboxSearchBox = ({ accessToken }) => {
                         color="primary"
                         style={{ marginTop: "16px" }}
                         >Search</Button>
-                        </form>
+            </form>
                         <div className="search-results">
                         <List>
                             {searchResults.map((result, index) => (
@@ -66,7 +66,7 @@ const MapboxSearchBox = ({ accessToken }) => {
                             ))}
                         </List>
                         </div>
-                        </div>
+        </div>
     );
 };
 

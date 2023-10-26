@@ -25,7 +25,7 @@ const MapComponent: React.FC = () => {
     const initializeMap = () => {
       const newMap = new mapboxgl.Map({
         container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/streets-v12',
+        style: 'mapbox://styles/mapbox/streets-v12/',
         center: [lng, lat],
         zoom: zoom,
         accessToken: mapboxAccessToken,

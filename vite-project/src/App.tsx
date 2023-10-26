@@ -7,6 +7,7 @@ import {
 
 import "./styles/app.css";
 import Home from "./pages/Home";
+import Sidenav from "./components/Navbar/Sidenav";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/sidenav" element={<Sidenav />} />
           </Routes>
         </Router>
       </div>

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl, { Map } from 'mapbox-gl';
-import MapboxSearchBox from './MapboxSearchBox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '../styles/SearchBox.css';
 import Sidenav from './Navbar/Sidenav';
@@ -49,8 +48,6 @@ const MapComponent: React.FC = () => {
   return (
     <div className='main'>
       <div ref={mapContainer} className="map-container" />
-      <Sidenav />
-      <MapboxSearchBox accessToken={mapboxAccessToken} />
     </div>
   );
 };

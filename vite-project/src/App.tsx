@@ -16,7 +16,6 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sidenav" element={<Sidenav />} />
           </Routes>
         </Router>
       </div>

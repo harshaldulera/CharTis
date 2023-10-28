@@ -9,7 +9,15 @@ function Home() {
     return (
         <div>
             <MapComponent />
-            <Sidenav />
+            <div className='sidebar' style={{
+                position: 'absolute',
+                top: '0',
+                left: '0',
+                height: '100vh',
+            
+            }}>
+                <Sidenav />
+            </div>
             <MapboxSearchBox accessToken={mapboxAccessToken} />
         </div>
     );

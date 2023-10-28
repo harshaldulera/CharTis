@@ -47,7 +47,8 @@ const MapComponent: React.FC = () => {
 
   return (
     <div className='main'>
-      <div ref={mapContainer} className="map-container" />
+      <div ref={mapContainer} className="map-container">
+      </div>
     </div>
   );
 };
